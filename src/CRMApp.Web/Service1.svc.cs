@@ -59,7 +59,7 @@ namespace CRMApp.Web
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error while connecting to CRM " + ex.Message);
+                Console.WriteLine(ex.ToString());
             }
         }
     }
