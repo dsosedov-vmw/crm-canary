@@ -9,7 +9,10 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Hello CRM!
+            <p>Hello CRM!</p>
+            <p>
+                <a href="Service1.svc?wsdl">WSDL</a>
+            </p>
         </div>
     </form>
 </body>
