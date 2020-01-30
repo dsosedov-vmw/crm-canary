@@ -1,0 +1,9 @@
+---
+applications:
+- name: crm-canary
+  memory: 512M
+  instances: 1
+  path: src/CRMApp.Web/bin/Release/Publish
+  stack: windows
+  buildpacks:
+  - hwc_buildpack
