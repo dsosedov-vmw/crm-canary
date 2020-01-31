@@ -1,6 +1,6 @@
 ---
 applications:
-- name: crm-canary
+- name: bdc-crm-canary
   memory: 512M
   instances: 1
   path: src/CRMApp.Web/bin/Release/Publish
