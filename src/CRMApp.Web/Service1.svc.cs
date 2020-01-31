@@ -2,6 +2,7 @@
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using System;
+using System.Net;
 using System.ServiceModel.Description;
 
 namespace CRMApp.Web
@@ -52,7 +53,12 @@ namespace CRMApp.Web
                 credentials.UserName.UserName = username;
                 credentials.UserName.Password = password;
                 Uri serviceUri = new Uri(soapOrgServiceUri);
+
                 // See https://community.dynamics.com/crm/f/microsoft-dynamics-crm-forum/281686/how-resolve-an-existing-connection-was-forcibly-closed-by-the-remote-host-in-ssrs-report/807188 if it throws
+                // The solution above won't work in PCF - below will
+                // https://community.dynamics.com/crm/f/microsoft-dynamics-crm-forum/263434/d365---9-0---an-existing-connection-was-forcibly-closed-by-the-remote-host
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
                 var proxy = new OrganizationServiceProxy(serviceUri, null, credentials, null);
                 proxy.EnableProxyTypes();
                 _service = (IOrganizationService)proxy;
